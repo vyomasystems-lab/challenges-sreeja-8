@@ -5,7 +5,7 @@ from cocotb.triggers import Timer
 import random
 
 @cocotb.test()
-async def test_mux(dut):
+async def test_mux_bugfree(dut):
     """Test for mux2"""
 
     cocotb.log.info('##### CTB: Develop your test here ########')
@@ -50,8 +50,8 @@ async def test_mux(dut):
         dut.inp29.value=arr[29]
         dut.inp30.value=arr[30]
         print(A)
-        print(arr[A])
         await Timer(2, units='ns')
+        print(arr[A],dut.out.value)
         assert dut.out.value == arr[A], "Randomised test failed with: input{input} of select line {A} with  input_value {value1} != mux_out {out}".format(input=A,
             A=dut.sel.value,value1=arr[A], out=dut.out.value )
         

@@ -4,10 +4,10 @@ TOPLEVEL_LANG ?= verilog
 
 PWD=$(shell pwd)
 
-VERILOG_SOURCES = $(PWD)/sync_fifo.v             # provide your design path
+VERILOG_SOURCES = $(PWD)/mux_bugfree.v
 
-TOPLEVEL := sync_fifo        # design file
-MODULE   := test_sync_fifo # test file
+TOPLEVEL := mux_bugfree         # design
+MODULE   := test_mux_bugfree     # test
 
 include $(shell cocotb-config --makefiles)/Makefile.sim
 
