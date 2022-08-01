@@ -4,7 +4,7 @@ The verification environment is setup using [Vyoma's UpTickPro](https://vyomasys
 
 *Make sure to include the Gitpod id in the screenshot*
 
-![](https://ibb.co/cDYWg9C)
+![gitpod_image](https://user-images.githubusercontent.com/81299825/182123886-34b15364-8acf-4615-870f-1a9673f2cf67.png)
 
 ## Verification Environment
 
