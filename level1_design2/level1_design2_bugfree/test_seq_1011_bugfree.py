@@ -28,8 +28,6 @@ async def test_seq_bug1(dut):
     
     for i in range(50):
         A=random.randint(0,1)
-        
-       
         dut.inp_bit.value=A
         await FallingEdge(dut.clk)
         out1=dut.seq_seen.value
@@ -37,7 +35,6 @@ async def test_seq_bug1(dut):
         b=""
         flag=0
         if(i>=3):
-            
             b=str1[i-3:i+1]
             print(b)
             if(b=="1011"):
@@ -45,11 +42,9 @@ async def test_seq_bug1(dut):
                 flag=1       
         print(str1)
         print(A,out1)
-        
-      
         "print(dut.current_state,dut.next_state)"
         
-        assert dut.seq_seen.value == flag  , "Randomised test failed with:{seq_seen}!= {flag} for sequencce {b} at {i} th bit ".format(flag=flag,
+        assert dut.seq_seen.value == flag  , "Randomised test failed with:{seq_seen}= {flag} for sequencce {b} at {i} th bit ".format(flag=flag,
          seq_seen=dut.seq_seen.value ,b=b,i=i)
 
 

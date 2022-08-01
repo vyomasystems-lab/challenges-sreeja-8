@@ -10,7 +10,7 @@ from cocotb.triggers import RisingEdge, FallingEdge,Timer
 
 
 @cocotb.test()
-async def test_sync_fifo(dut):
+async def test_sync_fifo_bugfree(dut):
     """Test for seq detection """
 
     clk_i = Clock(dut.clk_i, 10, units="us")  # Create a 10us period clock on port clk
@@ -57,8 +57,14 @@ async def test_sync_fifo(dut):
         print(dut.rdata_out.value); 
         assert dut.rdata_out.value== arr[i], "Randomised test failed  for {i} data which is not reading:{rdata_out}!= {writedata_in}".format(rdata_out=dut.rdata_out.value,writedata_in=arr[i],i=i) 
     await RisingEdge(dut.clk_i)   
+     
     dut.read_en_i.value=0;
-    await Timer(50, units="ns");
+    await Timer(50, units="ns")
+
+    
+    
+       
+
 
 
     

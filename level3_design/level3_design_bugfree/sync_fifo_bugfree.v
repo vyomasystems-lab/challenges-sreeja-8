@@ -1,4 +1,4 @@
-module sync_fifo(
+module sync_fifo_bugfree(
   //write interface
   rst_i,clk_i,write_en_i,wdata_i,full_out,
   //read interface
@@ -40,7 +40,7 @@ module sync_fifo(
           
           //increment the pointer
           if(wr_ptr==DEPTH-1) wr_toggle_f=~wr_toggle_f;
-          wr_ptr=wr_ptr;
+          wr_ptr=wr_ptr+1;
         end
       end
       //read can happen
@@ -54,7 +54,7 @@ module sync_fifo(
          
           //increment the read pointer
           if(rd_ptr==DEPTH-1) rd_toggle_f=~rd_toggle_f;
-          rd_ptr=rd_ptr;
+          rd_ptr=rd_ptr+1;
         end
       end   
     end 
@@ -65,7 +65,7 @@ module sync_fifo(
     full_out=0;
     if(wr_ptr==rd_ptr)begin
       if(wr_toggle_f==rd_toggle_f) empty_out=1;
-      if(wr_toggle_f!=rd_toggle_f) full_out=0;
+      if(wr_toggle_f!=rd_toggle_f) full_out=1;
     end    
   end
   task resetting();

@@ -1,4 +1,4 @@
-# Adder Design Verification
+# MULTIPLEXER Design Verification
 
 The verification environment is setup using [Vyoma's UpTickPro](https://vyomasystems.com) provided for the hackathon.
 
@@ -73,10 +73,28 @@ For the mux design, there are two same case matching statements for 12,13 input 
 ## Design Fix
 Updating the design and re-running the test makes the test pass.
 
-![](https://i.imgur.com/5XbL1ZH.png)
+```
+1 01
+29
+1 01
+18
+0 00
+   100.00ns INFO     test_mux_bugfree passed
+   100.00ns INFO     *******************************************************************************************
+                     ** TEST                               STATUS  SIM TIME (ns)  REAL TIME (s)  RATIO (ns/s) **
+                     *******************************************************************************************
+                     ** test_mux_bugfree.test_mux_bugfree   PASS         100.00           0.02       4548.89  **
+                     *******************************************************************************************
+                     ** TESTS=1 PASS=1 FAIL=0 SKIP=0                     100.00           0.03       3265.81  **
+                     *******************************************************************************************
+                     
+make[1]: Leaving directory '/workspace/challenges-sreeja-8/level1_design1/level1_design_bugfree'
+```
 
 The updated design has been created in another folder "level1_design_bugfree" within level1_design1 folder and the design has been verified and the bug has been fixed.
 
 ## Verification Strategy
-
+Integer A has been assigned to sel value .
+for every A value using for loop all 32 inputs of mux were first stored in an array and then assigned to inputs based on array index.
+Then assertion has been made which compares DUT out value with array[A] which means array[sel].
 
